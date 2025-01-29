@@ -11,8 +11,14 @@ import { FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { inter } from "@/lib/fonts";
+
+type Link = {
+  name: string;
+  link: string;
+};
+
 export default function Navbar() {
-  const links = [
+  const links: Link[] = [
     { name: "Home", link: "/" },
     { name: "Opticals", link: "/opticals" },
     { name: "Sunglasses", link: "/sunglasses" },
@@ -44,7 +50,7 @@ export default function Navbar() {
           <Logo />
         </Link>
         <div className="hidden md:flex gap-4 tracking-wider">
-          {links.map((link: any) => (
+          {links.map((link: Link) => (
             <Link
               href={link.link}
               key={link.name}
@@ -83,7 +89,7 @@ export default function Navbar() {
               >
                 <FaTimes />
               </div>
-              {links.map((link: any) => (
+              {links.map((link: Link) => (
                 <div key={link.name}>
                   <Link
                     href={link.link}
