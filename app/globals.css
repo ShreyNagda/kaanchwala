@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "DM Serif Display", Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   body {
     @apply bg-dark-primary;
