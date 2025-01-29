@@ -1,11 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaPhoneAlt,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaPhoneAlt } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import Logo from "./Logo";
 import { noto_serif_display } from "@/lib/fonts";

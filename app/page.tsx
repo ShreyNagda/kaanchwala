@@ -1,7 +1,4 @@
-import Logo from "@/Components/Logo";
-import { inter, noto_serif_display } from "@/lib/fonts";
-import { AnimatePresence, motion } from "framer-motion";
-import { getFeaturedProducts, getProducts } from "@/sanity/sanity-utils";
+// import { getFeaturedProducts, getProducts } from "@/sanity/sanity-utils";
 import About from "@/Components/About";
 import Hero from "@/Components/Hero";
 
