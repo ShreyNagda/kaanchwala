@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <div
       className={
-        "flex flex-col items-center pt-32 text-white h-[calc(100vh-80px)] " +
+        "flex flex-col items-center pt-32 text-white h-[calc(95vh)] " +
         noto_serif_display.className
       }
     >
