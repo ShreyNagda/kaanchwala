@@ -11,7 +11,7 @@ export default function Logo() {
     //   <div className="text-sm leading-none">& Sons</div>
     // </div>
     <div className="w-[80px] h-[80px] flex items-center justify-center">
-      <Image src="logo.png" alt="logo" height={50} width={50} />
+      <Image src="/logo.png" alt="logo" height={50} width={50} />
     </div>
   );
 }
