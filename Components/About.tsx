@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <section
-      style={{"min-height": 95vh}}
+      style={{min-height: "95vh"}}
       className={
         "flex flex-col items-center justify-center bg-light-primary text-black min-h-[95vh] gap-2 text-2xl max-w-4xl mx-auto py-2 " +
         inter.className
