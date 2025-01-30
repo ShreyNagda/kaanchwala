@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <div
+      style={{ height: "95vh" }}
       className={
         "flex flex-col items-center pt-32 text-white h-[calc(95vh)] " +
         noto_serif_display.className
