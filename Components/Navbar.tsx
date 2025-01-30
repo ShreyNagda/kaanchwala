@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-import Logo from "@/Components/Logo";
+import Logo from "@/components/Logo";
 import { MdOutlineShoppingBag, MdOutlinePersonOutline } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import { FaTimes } from "react-icons/fa";

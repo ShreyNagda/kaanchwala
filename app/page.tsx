@@ -1,6 +1,6 @@
 // import { getFeaturedProducts, getProducts } from "@/sanity/sanity-utils";
-import About from "@/Components/About";
-import Hero from "@/Components/Hero";
+import About from "@/components/About";
+import Hero from "@/components/Hero";
 
 export default async function Home() {
   // Fetching data from Sanity
