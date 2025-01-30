@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 import { inter } from "@/lib/fonts";
-import Transition from "@/components/Transition";
+import Transition from "@/Components/Transition";
 
 export const metadata: Metadata = {
   title: "Kaanchwala & Sons",
