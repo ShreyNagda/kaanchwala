@@ -1,6 +1,7 @@
-// import { getFeaturedProducts, getProducts } from "@/sanity/sanity-utils";
-import About from "@/Components/About";
-import Hero from "@/Components/Hero";
+import { AnimatePresence } from "framer-motion";
+import Hero from "./components/Hero";
+import Services from "./components/Services";
+import About from "./components/About";
 
 export default async function Home() {
   // Fetching data from Sanity
@@ -8,10 +9,9 @@ export default async function Home() {
   // const featuredProducts = await getFeaturedProducts();
   return (
     <div>
-      <>
-        <Hero />
-        <About />
-      </>
+      <Hero />
+      <About />
+      <Services />
     </div>
   );
 }

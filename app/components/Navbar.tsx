@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-import Logo from "@/Components/Logo";
+import Logo from "@/app/components/Logo";
 import { MdOutlineShoppingBag, MdOutlinePersonOutline } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import { FaTimes } from "react-icons/fa";
@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <header
       className={
-        " text-white p-2 md:p-4 max-w-2xl md:max-w-4xl mx-auto " +
+        " text-white p-2 md:p-4 max-w-2xl md:max-w-4xl mx-auto border-b border-white " +
         inter.className
       }
     >

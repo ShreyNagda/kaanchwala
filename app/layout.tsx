@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
 import { inter } from "@/lib/fonts";
-import Transition from "@/Components/Transition";
+import Transition from "@/app/components/Transition";
 
 export const metadata: Metadata = {
   title: "Kaanchwala & Sons",
@@ -17,11 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={"antialiased " + inter.className}>
+      <body className={"h-full antialiased " + inter.className}>
         <Navbar />
-        <main className="min-h-[calc(100vh-93px)] bg-dark-primary text-white overflow-x-hidden">
-          <Transition>{children}</Transition>
-        </main>
+        <main className=" bg-dark-primary text-white">{children}</main>
         <Footer />
       </body>
     </html>
