@@ -5,15 +5,15 @@ import Image from "next/image";
 export default function Services() {
   const service_data = [
     {
-      image: "./reading-eyeglasses.png",
+      image: "/reading-eyeglasses.png",
       title: "Spectacles",
     },
     {
-      image: "./summer.png",
+      image: "/summer.png",
       title: "Sunglasses",
     },
     {
-      image: "./contact-lens.png",
+      image: "/contact-lens.png",
       title: "Contact Lens",
     },
   ];
