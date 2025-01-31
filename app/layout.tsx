@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { inter } from "@/lib/fonts";
-import Transition from "@/app/components/Transition";
 
 export const metadata: Metadata = {
   title: "Kaanchwala & Sons",
@@ -17,9 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={"h-full antialiased " + inter.className}>
+      <body className={"min-h-screen antialiased  " + inter.className}>
         <Navbar />
-        <main className=" bg-dark-primary text-white">{children}</main>
+        <main className="min-h-full md:min-h-[550px] bg-dark-primary text-white">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

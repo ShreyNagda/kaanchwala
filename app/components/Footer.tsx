@@ -1,7 +1,8 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { FaFacebook, FaInstagram, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebook, FaPhoneAlt } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
+import { RiInstagramFill } from "react-icons/ri";
 import Logo from "./Logo";
 import { noto_serif_display } from "@/lib/fonts";
 
@@ -12,11 +13,11 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-primary text-white flex flex-col items-center max-w-4xl mx-auto">
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-1 py-4 items-center">
+    <footer className="bg-primary text-white flex flex-col max-w-4xl mx-auto p-4">
+      <div className="w-full flex flex-col md:flex-row items-center justify-between">
         <div
           className={
-            "row-span-2 flex items-center justify-center text-lg " +
+            "flex items-center justify-center text-lg " +
             noto_serif_display.className
           }
         >
@@ -26,23 +27,30 @@ export default function Footer() {
             <br /> & Sons
           </div>
         </div>
-        <div className="flex items-center justify-center gap-2 pl-5 md:pl-0 ">
-          <FaPhoneAlt />
-          +91 9890334929
-        </div>
-        <div className="flex items-center justify-center gap-2 pl-5 md:pl-0">
-          <MdMail />
-          kaanchwala@gmail.com
-        </div>
-        <div className="flex items-center justify-center gap-2 pl-5 md:pl-0">
-          <FaInstagram />
-          kaanchwala_
-        </div>
-        <div className="flex items-center justify-center gap-2 pl-5 md:pl-0">
-          <FaFacebook />
-          kaanchwala_
+        <div className="flex gap-4">
+          <a href={`tel:${9890334929}`} className="">
+            <FaPhoneAlt size={18} />
+          </a>
+          <a href="mailto:shreynagda2714@gmail.com">
+            <MdMail size={20} />
+          </a>
+          <a
+            target="_new"
+            href="https://www.instagram.com/kaanchwala_/"
+            className=""
+          >
+            <RiInstagramFill size={20} />
+          </a>
+          <a
+            target="_new"
+            href="https://www.facebook.com/shrey.nagda/"
+            className=""
+          >
+            <FaFacebook size={20} />
+          </a>
         </div>
       </div>
+      <div className="text-center p-2">&copy; All rights reserved</div>
     </footer>
   );
 }

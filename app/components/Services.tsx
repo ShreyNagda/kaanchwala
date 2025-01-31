@@ -1,5 +1,6 @@
 "use client";
-import { hover, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Services() {
   const service_data = [
@@ -71,7 +72,7 @@ function ServiceCard({
       whileInView="visible"
       whileHover="hover"
     >
-      <img src={image} alt="" height={50} width={50} />
+      <Image src={image} alt="" height={50} width={50} />
       <div className="text-lg">{title}</div>
     </motion.div>
   );

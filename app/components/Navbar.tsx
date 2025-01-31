@@ -77,7 +77,7 @@ export default function Navbar() {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="md:hidden absolute top-0 left-0 bg-dark-primary text-white z-10 h-[calc(100vh-10px)] w-4/5 h-[calc(100vh - 40px)] shadow-lg p-5 space-y-3"
+              className="md:hidden absolute top-0 left-0 bg-dark-primary text-white z-10 h-[98vh] w-4/5 p-5 space-y-3 no-doc-scroll"
               initial={{ x: "-100%", opacity: 0 }}
               animate={{ x: "0", opacity: 1 }}
               exit={{ x: "-100%", opacity: 0 }}
@@ -85,7 +85,7 @@ export default function Navbar() {
             >
               <div
                 onClick={() => setIsMenuOpen(false)}
-                className=" text-white px-2"
+                className=" text-white px-2 mt-5"
               >
                 <FaTimes />
               </div>

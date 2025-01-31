@@ -15,7 +15,7 @@ export default function About() {
       <motion.p
         className="p-1 md:p-2"
         initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         Welcome to Kaachwala & Sons, previously Arihant Opticians, the premier
@@ -28,7 +28,7 @@ export default function About() {
       <motion.p
         className="p-1 md:p-2"
         initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeInOut", delay: 0.1 }}
       >
         At Kaanchwala & Sons, we pride ourselves on delivering exceptional

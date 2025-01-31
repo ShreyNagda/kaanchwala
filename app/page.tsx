@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+// import { AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import About from "./components/About";

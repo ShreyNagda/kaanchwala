@@ -1,7 +1,7 @@
 "use client";
 import { noto_serif_display } from "@/lib/fonts";
 import { motion } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -19,7 +19,7 @@ export default function Hero() {
         whileInView={{ y: 0, opacity: 1 }}
         exit={{ y: -100, opacity: 0 }}
         transition={{ ease: "easeInOut", duration: 0.3, delay: 0.2 }}
-        className="absolute z-10"
+        className="absolute z-0"
       >
         <h1
           className={
