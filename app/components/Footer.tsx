@@ -31,7 +31,7 @@ export default function Footer() {
           <a href={`tel:${9890334929}`} className="">
             <FaPhoneAlt size={18} />
           </a>
-          <a href="mailto:shreynagda2714@gmail.com">
+          <a href="mailto:kaanchwala89@gmail.com">
             <MdMail size={20} />
           </a>
           <a
@@ -43,7 +43,7 @@ export default function Footer() {
           </a>
           <a
             target="_new"
-            href="https://www.facebook.com/shrey.nagda/"
+            href="https://www.facebook.com/profile.php?id=61572843298445"
             className=""
           >
             <FaFacebook size={20} />
