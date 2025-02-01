@@ -16,12 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={"min-h-screen antialiased  " + inter.className}>
-        <Navbar />
-        <main className="min-h-full md:min-h-[550px] bg-dark-primary text-white">
+      <body className={"antialiased  " + inter.className}>
+        <main className="bg-dark-primary text-white">
+          <Navbar />
           {children}
+          <Footer />
         </main>
-        <Footer />
       </body>
     </html>
   );

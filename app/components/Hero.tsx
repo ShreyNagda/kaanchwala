@@ -5,21 +5,12 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="w-full md:w-[768px] bg-primary  mx-auto md:h-[550px] h-[450px] flex items-center justify-center relative">
-      {/* <motion.div
-        className="absolute top-10  opacity-70"
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 0.7 }}
-        transition={{ ease: "easeInOut", duration: 0.3 }}
-      >
-        <Image src="/bg.png" alt="hero" width={400} height={300} />
-      </motion.div> */}
+    <div className="w-full md:w-[768px] bg-primary mx-auto min-h-[calc(100vh-80px)] flex items-center justify-center">
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         exit={{ y: -100, opacity: 0 }}
         transition={{ ease: "easeInOut", duration: 0.3, delay: 0.2 }}
-        className="absolute z-0"
       >
         <h1
           className={
