@@ -10,7 +10,7 @@ import { FaTimes } from "react-icons/fa";
 
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { inter } from "@/lib/fonts";
+import { inter } from "@/app/lib/fonts";
 
 type Link = {
   name: string;
@@ -25,6 +25,7 @@ export default function Navbar() {
   ];
 
   const pathName = usePathname();
+  console.log(pathName);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -93,7 +94,7 @@ export default function Navbar() {
                 <div key={link.name}>
                   <Link
                     href={link.link}
-                    className="text-lg"
+                    className={`text-lg ${pathName === link.link ? "text-light-accent" : "text-light-primary"}`}
                     onClick={() => {
                       setIsMenuOpen(false);
                     }}
@@ -104,9 +105,19 @@ export default function Navbar() {
               ))}
               <Link
                 href={"/profile"}
-                className={`absolute bottom-5 ${pathName === "/profile" ? "text-light-accent" : "text-white"}`}
+                className={`flex gap-2 absolute bottom-5 ${pathName === "profile" ? "text-light-accent" : "text-white"}`}
               >
-                <MdOutlinePersonOutline size={25} color="D4AF37" />
+                <MdOutlinePersonOutline
+                  size={25}
+                  color={pathName === "/profile" ? "D4AF37" : "FFFFFF"}
+                />
+                <p
+                  className={
+                    pathName === "/profile" ? "text-light-accent" : "text-white"
+                  }
+                >
+                  Profile
+                </p>
               </Link>
             </motion.div>
           )}

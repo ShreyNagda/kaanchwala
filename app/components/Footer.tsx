@@ -4,7 +4,7 @@ import { FaFacebook, FaPhoneAlt } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import { RiInstagramFill } from "react-icons/ri";
 import Logo from "./Logo";
-import { noto_serif_display } from "@/lib/fonts";
+import { noto_serif_display } from "@/app/lib/fonts";
 
 export default function Footer() {
   const pathName = usePathname();

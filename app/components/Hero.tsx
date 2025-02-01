@@ -1,5 +1,5 @@
 "use client";
-import { noto_serif_display } from "@/lib/fonts";
+import { noto_serif_display } from "@/app/lib/fonts";
 import { motion } from "framer-motion";
 // import Image from "next/image";
 
