@@ -72,10 +72,10 @@ export default function CTA() {
                 <div>
                   <h3 className="font-semibold text-bg mb-1">Phone</h3>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+919890334929"
                     className="text-2xl font-display font-bold text-gold hover:text-gold-soft transition-colors"
                   >
-                    +91 98765 43210
+                    +91 98903 34929
                   </a>
                 </div>
               </div>
