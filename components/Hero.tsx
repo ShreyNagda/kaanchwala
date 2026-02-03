@@ -70,7 +70,7 @@ export default function HeroSection() {
             Visit Our Store
           </a>
           <a
-            href="tel:+919876543210"
+            href="tel:+919890334929"
             className="flex-1 border-2 border-gold text-gold hover:bg-gold hover:text-black font-semibold px-10 py-4 rounded-sm transition-all duration-300 w-full sm:w-auto"
           >
             Call Now
