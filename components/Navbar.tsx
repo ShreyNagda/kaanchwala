@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,14 +28,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 flex items-center justify-center">
-              <span
-                className={`font-display text-2xl font-bold transition-colors ${
-                  isScrolled ? "text-gold" : "text-gold"
-                }`}
-              >
-                K&S
-              </span>
+            <div className="w-12 h-12 flex items-center justify-center relative">
+              <Image
+                src="/logo2.png"
+                alt="Kaanchwala & Sons Logo"
+                width={48}
+                height={48}
+                className="object-contain"
+                priority
+              />
             </div>
             <div className="hidden sm:block">
               <p

@@ -20,10 +20,25 @@ export const metadata: Metadata = {
     "Kaanchwala Sons",
     "Arihant Opticals",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "any" },
+      { url: "/kaancwala.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/kaancwala.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     title: "Kaanchwala & Sons | Premium Eyewear in Bhiwandi",
     description: "Premium eyewear & trusted eye care in Gopal Nagar, Bhiwandi",
     type: "website",
+    images: [
+      {
+        url: "/kaancwala.png",
+        width: 1200,
+        height: 630,
+        alt: "Kaanchwala & Sons - Premium Eyewear",
+      },
+    ],
   },
 };
 

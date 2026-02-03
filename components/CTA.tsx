@@ -53,7 +53,7 @@ export default function CTA() {
                 <div>
                   <h3 className="font-semibold text-bg mb-1">Address</h3>
                   <p className="text-gray-600">
-                    Gopal Nagar, Bhiwandi
+                    Shop No. 4, 8-B/6, Gopal Nagar, Bhiwandi
                     <br />
                     Next to Dr. Praful Bhat&apos;s Eye Clinic
                     <br />

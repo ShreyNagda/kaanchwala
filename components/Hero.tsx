@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -21,9 +22,16 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="mb-6"
         >
-          <span className="text-gold font-display text-6xl md:text-8xl font-bold block mb-2">
-            K&S
-          </span>
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/kaancwala.png"
+              alt="Kaanchwala & Sons"
+              width={150}
+              height={150}
+              className="object-contain"
+              priority
+            />
+          </div>
           <p className="text-white/60 text-sm md:text-base uppercase tracking-[0.3em]">
             Kaanchwala & Sons
           </p>
