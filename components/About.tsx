@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 export default function About() {
@@ -22,12 +23,19 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 rounded-sm relative overflow-hidden">
+            <div className="aspect-4/5 bg-linear-to-br from-gray-100 to-gray-200 rounded-sm relative overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-gold flex items-center justify-center">
                     <span className="text-gold font-display text-5xl font-bold">
-                      K&S
+                      <Image
+                        src="/logo2.png"
+                        alt="Kaanchwala & Sons Logo"
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                        priority
+                      />
                     </span>
                   </div>
                   <p className="text-gray-600 font-semibold">

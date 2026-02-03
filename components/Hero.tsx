@@ -20,11 +20,11 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-6"
+          className="mb-4 md:mb-6"
         >
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-0 md:mb-4">
             <Image
-              src="/kaancwala.png"
+              src="/logo2.png"
               alt="Kaanchwala & Sons"
               width={150}
               height={150}
@@ -41,7 +41,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 leading-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-4 md:mb-8 leading-tight"
         >
           Timeless Vision.
           <br />
@@ -52,7 +52,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-white/70 mb-6 md:b-12 max-w-2xl mx-auto leading-relaxed"
         >
           Premium eyewear & expert eye care in Gopal Nagar, Bhiwandi
         </motion.p>
@@ -83,7 +83,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2"
+        className="absolute bottom-1 md:bottom-4 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
