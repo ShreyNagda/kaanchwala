@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { formatPrice, shortId } from "@/lib/utils";
 import { format } from "date-fns";
 import { signOut } from "@/lib/actions/auth";
-import { Package, LogOut } from "lucide-react";
+import { Package, LogOut, Key } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PrescriptionManager } from "@/components/account/PrescriptionManager";
@@ -39,17 +39,26 @@ export default async function AccountPage() {
   return (
     <div className="py-8 sm:py-12">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="text-3xl font-bold text-foreground">My Account</h1>
             <p className="text-muted-foreground mt-1">{user.email}</p>
           </div>
-          <form action={signOut}>
-            <button type="submit" className="btn-outline gap-2 text-sm">
-              <LogOut className="h-4 w-4" />
-              Sign Out
-            </button>
-          </form>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/change-password?redirect=/account"
+              className="btn-outline gap-2 text-sm py-2.5"
+            >
+              <Key className="h-4 w-4" />
+              Change Password
+            </Link>
+            <form action={signOut}>
+              <button type="submit" className="btn-outline gap-2 text-sm py-2.5">
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </button>
+            </form>
+          </div>
         </div>
 
         {/* Prescription Section */}

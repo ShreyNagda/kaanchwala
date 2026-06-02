@@ -51,6 +51,7 @@ export async function GET(request: NextRequest) {
       if (redirectParam) confirmUrl += `&redirect=${encodeURIComponent(redirectParam)}`;
     } catch (e) {
       // ignore parsing errors
+      console.log(e)
     }
   }
   return NextResponse.redirect(confirmUrl);

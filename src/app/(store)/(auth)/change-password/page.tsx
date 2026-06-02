@@ -11,6 +11,7 @@ function ChangePasswordForm() {
   const searchParams = useSearchParams();
   const errorParam = searchParams.get("error");
   const isExpired = errorParam === "link_expired";
+  const redirect = searchParams.get("redirect") || "/login";
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -43,9 +44,9 @@ function ChangePasswordForm() {
     }
 
     setSuccess(true);
-    // Redirect to login after 3 seconds
+    // Redirect to next target after 3 seconds
     setTimeout(() => {
-      router.push("/login");
+      router.push(redirect);
     }, 3000);
   };
 
@@ -83,10 +84,10 @@ function ChangePasswordForm() {
         </div>
         <h2 className="font-semibold text-foreground text-lg">Password Changed Successfully</h2>
         <p className="text-sm text-muted-foreground">
-          Your password has been updated. You will be redirected to the login page shortly to sign in with your new credentials.
+          Your password has been updated. You will be redirected shortly…
         </p>
-        <Link href="/login" className="btn-primary w-full mt-2">
-          Back to Sign In
+        <Link href={redirect} className="btn-primary w-full mt-2">
+          {redirect === "/account" ? "Back to Account" : "Back to Sign In"}
         </Link>
       </div>
     );
