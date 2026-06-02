@@ -60,7 +60,7 @@ export async function signUp(prevState: unknown, formData: FormData) {
   const origin = `${protocol}://${host}`;
 
   const redirectTo = formData.get("redirect") as string;
-  const nextParam = `/register/success?redirect=${encodeURIComponent(redirectTo || "/")}`;
+  const nextParam = `/register/success?redirect=${encodeURIComponent(redirectTo || "/")}&email=${encodeURIComponent(validated.data.email)}`;
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signUp({

@@ -17,6 +17,9 @@ function ConfirmEmailContent() {
   const email = searchParams.get("email") || "your email";
   const redirect = searchParams.get("redirect") || "/";
 
+  const errorParam = searchParams.get("error");
+  const isExpired = errorParam === "link_expired";
+
   const [resending, setResending] = useState(false);
   const [resendStatus, setResendStatus] = useState<
     "idle" | "success" | "error"
@@ -37,7 +40,7 @@ function ConfirmEmailContent() {
         type: "signup",
         email: email,
         options: {
-          emailRedirectTo: `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(`/register/success?redirect=${encodeURIComponent(redirect)}`)}`,
+          emailRedirectTo: `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(`/register/success?redirect=${encodeURIComponent(redirect)}&email=${encodeURIComponent(email)}`)}`,
         },
       });
 
@@ -73,6 +76,12 @@ function ConfirmEmailContent() {
           </span>
         </div>
       </div>
+
+      {isExpired && (
+        <div className="text-xs text-destructive bg-destructive/10 py-2.5 px-3 rounded-lg leading-relaxed">
+          The confirmation link has expired or is invalid. Please click the button below to request a new verification email.
+        </div>
+      )}
 
       {/* Main Copy */}
       <div className="space-y-2">

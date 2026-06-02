@@ -1,13 +1,17 @@
 "use client";
 
 import { useState, Suspense } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Eye, EyeOff, Loader2, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 function ChangePasswordForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const errorParam = searchParams.get("error");
+  const isExpired = errorParam === "link_expired";
+
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -44,6 +48,30 @@ function ChangePasswordForm() {
       router.push("/login");
     }, 3000);
   };
+
+  if (isExpired) {
+    return (
+      <div className="card p-8 text-center space-y-5">
+        <div className="flex justify-center">
+          <div className="h-16 w-16 rounded-full bg-destructive/10 flex items-center justify-center">
+            <span className="text-destructive text-xl font-bold">!</span>
+          </div>
+        </div>
+        <h2 className="font-semibold text-foreground text-lg">Reset Link Expired</h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          This password reset link is invalid or has expired. For security reasons, reset links are only valid for 24 hours.
+        </p>
+        <div className="flex flex-col gap-2.5 pt-2">
+          <Link href="/" className="btn-primary w-full">
+            Back to Home Page
+          </Link>
+          <Link href="/forgot-password" className="btn-outline w-full">
+            Request a New Reset Link
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   if (success) {
     return (

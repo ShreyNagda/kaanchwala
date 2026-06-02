@@ -20,6 +20,23 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // Something went wrong — redirect to login with an error hint
-  return NextResponse.redirect(`${origin}/login?error=link_expired`);
+  // Something went wrong — redirect to the appropriate error page
+  const type = searchParams.get("type");
+  if (type === "recovery") {
+    return NextResponse.redirect(`${origin}/change-password?error=link_expired`);
+  }
+
+  let confirmUrl = `${origin}/register/confirm?error=link_expired`;
+  if (next) {
+    try {
+      const nextUrl = new URL(next, origin);
+      const email = nextUrl.searchParams.get("email");
+      const redirectParam = nextUrl.searchParams.get("redirect");
+      if (email) confirmUrl += `&email=${encodeURIComponent(email)}`;
+      if (redirectParam) confirmUrl += `&redirect=${encodeURIComponent(redirectParam)}`;
+    } catch (e) {
+      // ignore parsing errors
+    }
+  }
+  return NextResponse.redirect(confirmUrl);
 }
