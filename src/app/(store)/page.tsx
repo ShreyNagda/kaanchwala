@@ -1,18 +1,8 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  Truck,
-  Shield,
-  Eye,
-  Sparkles,
-  Phone,
-  Calendar,
-  Glasses,
-  Sun,
-} from "lucide-react";
+import { ArrowRight, Truck, Shield, Eye, Sparkles, Phone } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
+import { ProductCard } from "@/components/product/ProductCard";
 
 export default async function HomePage() {
   const db = createAdminClient();
@@ -192,7 +182,10 @@ export default async function HomePage() {
       </section>
 
       {/* ===== Featured Products Section ===== */}
-      <section className="py-20 bg-background border-t border-border">
+      <section
+        id="featured"
+        className="py-20 bg-background border-t border-border"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
             <div>
@@ -220,90 +213,13 @@ export default async function HomePage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {featuredProducts.map((product) => (
-                <Link
+              {featuredProducts.map((product, idx) => (
+                <ProductCard
                   key={product.id}
-                  href={`/products/${product.id}`}
-                  className="card group overflow-hidden"
-                >
-                  <div className="relative aspect-square bg-muted overflow-hidden">
-                    {product.image_urls && product.image_urls.length > 0 ? (
-                      <>
-                        <Image
-                          src={product.image_urls[0]}
-                          alt={product.title}
-                          width={300}
-                          height={300}
-                          sizes="(max-w-7xl) 25vw, 300px"
-                          className={`h-full w-full object-cover transition-all duration-700 ease-out ${
-                            product.image_urls.length >= 2
-                              ? "absolute inset-0 opacity-100 group-hover:opacity-0 group-hover:scale-105"
-                              : "group-hover:scale-105"
-                          }`}
-                        />
-                        {product.image_urls.length >= 2 && (
-                          <Image
-                            src={product.image_urls[1]}
-                            alt={`${product.title} alternate view`}
-                            width={300}
-                            height={300}
-                            sizes="(max-w-7xl) 25vw, 300px"
-                            className="h-full w-full object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                          />
-                        )}
-                      </>
-                    ) : (
-                      <div className="h-full w-full flex items-center justify-center text-muted-foreground">
-                        {product.category === "sunglasses" ? (
-                          <Sun className="h-10 w-10" />
-                        ) : product.category === "contact_lenses" ? (
-                          <Eye className="h-10 w-10" />
-                        ) : (
-                          <Glasses className="h-10 w-10" />
-                        )}
-                      </div>
-                    )}
-
-                    <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-                      {product.is_premium && (
-                        <span className="badge gap-1">
-                          <Sparkles className="h-3 w-3" /> Premium
-                        </span>
-                      )}
-                      {product.discount_price && (
-                        <span className="badge badge-destructive">
-                          {Math.round(
-                            ((product.base_price - product.discount_price) /
-                              product.base_price) *
-                              100,
-                          )}
-                          % OFF
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="p-4">
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">
-                      {product.category.replace("_", " ")}
-                    </p>
-                    <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-1 text-sm">
-                      {product.title}
-                    </h3>
-                    <div className="flex items-baseline gap-2 mt-2">
-                      <span className="text-sm font-bold text-foreground">
-                        {formatPrice(
-                          product.discount_price ?? product.base_price,
-                        )}
-                      </span>
-                      {product.discount_price && (
-                        <span className="text-xs text-muted-foreground line-through">
-                          {formatPrice(product.base_price)}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
+                  product={product}
+                  inViewDelay={1000}
+                  staggerDelay={idx * 120}
+                />
               ))}
             </div>
           )}
@@ -311,7 +227,7 @@ export default async function HomePage() {
       </section>
 
       {/* ===== Heritage & Boutique Story Section ===== */}
-      <section className="py-24 bg-surface border-y border-border">
+      <section id="story" className="py-24 bg-surface border-y border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Column: Boutique image with gold detail */}
@@ -364,13 +280,6 @@ export default async function HomePage() {
                   className="btn-accent px-6 text-xs uppercase tracking-widest font-semibold text-black"
                 >
                   View Luxury Catalog
-                </Link>
-                <Link
-                  className="inline-flex items-center gap-2 text-xs text-muted-foreground font-semibold uppercase tracking-wider"
-                  href={"tel:+9890334929"}
-                >
-                  <Phone className="h-4 w-4 text-accent" /> Book Consultation:
-                  +91 9890334929
                 </Link>
               </div>
             </div>
@@ -450,17 +359,16 @@ export default async function HomePage() {
 
               <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
                 <Link
-                  href="/products"
+                  href="/lenses?redirect=/"
                   className="btn-accent text-xs font-semibold tracking-widest uppercase px-8 text-black"
                 >
                   Configure My Lenses
                 </Link>
                 <Link
-                  href="/account"
-                  className="inline-flex items-center gap-1.5 text-xs text-stone-300 hover:text-white font-semibold uppercase tracking-wider pt-2 sm:pt-0"
+                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-400 hover:text-white"
+                  href={"tel:+9890334929"}
                 >
-                  <Calendar className="h-4 w-4 text-accent" /> Book Eye
-                  Examination
+                  <Phone className="h-4 w-4 text-accent" /> Book Consultation
                 </Link>
               </div>
             </div>

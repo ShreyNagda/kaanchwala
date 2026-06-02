@@ -85,7 +85,7 @@ export async function signUp(prevState: unknown, formData: FormData) {
   }
 
   const redirectTo = formData.get("redirect") as string;
-  redirect(redirectTo || "/");
+  redirect(`/register/success?redirect=${encodeURIComponent(redirectTo || "/")}`);
 }
 
 export async function signOut() {

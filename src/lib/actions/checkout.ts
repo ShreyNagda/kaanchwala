@@ -1,5 +1,6 @@
 "use server";
 
+import { createHash } from "crypto";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createRazorpayOrder, verifyPaymentSignature } from "@/lib/razorpay";
@@ -448,13 +449,28 @@ export async function uploadPrescriptionFile(formData: FormData) {
   const file = formData.get("file") as File;
   if (!file) return { error: "No file provided" };
 
-  const ext = file.name.split(".").pop();
-  const fileName = `${user.id}/${Date.now()}_${Math.random().toString(36).substring(7)}.${ext}`;
-
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
 
+  // Derive a content-based filename from SHA-256 hash to prevent duplicate uploads
+  const hash = createHash("sha256").update(buffer).digest("hex");
+  const ext = file.name.split(".").pop();
+  // Store under the user's folder so each user's files are scoped to them
+  const fileName = `${user.id}/${hash}.${ext}`;
+
   const adminDb = createAdminClient();
+
+  // Check if this exact file content already exists for this user
+  const { data: existing } = await adminDb.storage
+    .from("prescriptions")
+    .list(user.id, { search: `${hash}.` });
+
+  if (existing && existing.some((f) => f.name === `${hash}.${ext}`)) {
+    const {
+      data: { publicUrl },
+    } = adminDb.storage.from("prescriptions").getPublicUrl(fileName);
+    return { success: true, url: publicUrl };
+  }
 
   let { error } = await adminDb.storage
     .from("prescriptions")

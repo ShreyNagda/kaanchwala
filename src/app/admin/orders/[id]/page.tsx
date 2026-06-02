@@ -28,8 +28,8 @@ import type {
   ShippingAddress,
   Prescription,
   OrderWithItems,
-  OrderStatus,
 } from "@/lib/types";
+import Image from "next/image";
 
 export const metadata: Metadata = { title: "Admin — Order Details" };
 
@@ -238,10 +238,12 @@ export default async function OrderDetailsPage({
                           the file using the button above.
                         </div>
                       ) : (
-                        <img
+                        <Image
+                          width={100}
+                          height={100}
                           src={prescription.prescription_url}
                           alt="Prescription Image"
-                          className="max-h-[400px] w-auto object-contain rounded-lg border border-border bg-surface"
+                          className="max-h-100 w-auto object-contain rounded-lg border border-border bg-surface"
                         />
                       )}
                     </div>

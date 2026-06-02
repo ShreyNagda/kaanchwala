@@ -39,12 +39,20 @@ function LoginForm() {
       </div>
 
       <div>
-        <label
-          htmlFor="password"
-          className="text-sm font-medium text-foreground block mb-1.5"
-        >
-          Password
-        </label>
+        <div className="flex items-center justify-between">
+          <label
+            htmlFor="password"
+            className="text-sm font-medium text-foreground"
+          >
+            Password
+          </label>
+          <Link
+            href="/forgot-password"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Forgot password?
+          </Link>
+        </div>
         <div className="relative">
           <input
             id="password"
@@ -73,6 +81,15 @@ function LoginForm() {
           </p>
         )}
       </div>
+
+      {searchParams.get("error") === "link_expired" && (
+        <p className="text-xs text-destructive">
+          Your reset link has expired.{" "}
+          <Link href="/forgot-password" className="underline">
+            Request a new one.
+          </Link>
+        </p>
+      )}
 
       <button
         type="submit"

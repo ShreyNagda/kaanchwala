@@ -1,5 +1,7 @@
 "use server";
 
+import { createHash } from "crypto";
+
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { sendOrderShipped } from "@/lib/email";
@@ -219,11 +221,25 @@ export async function uploadProductImage(formData: FormData) {
   const file = formData.get("file") as File;
   if (!file) return { error: "No file provided" };
 
-  const ext = file.name.split(".").pop();
-  const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${ext}`;
-
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
+
+  // Derive a content-based filename from SHA-256 hash to prevent duplicate uploads
+  const hash = createHash("sha256").update(buffer).digest("hex");
+  const ext = file.name.split(".").pop();
+  const fileName = `${hash}.${ext}`;
+
+  // Check if this exact file already exists in storage
+  const { data: existing } = await db.storage
+    .from("product-images")
+    .list("", { search: hash });
+
+  if (existing && existing.some((f) => f.name === fileName)) {
+    const {
+      data: { publicUrl },
+    } = db.storage.from("product-images").getPublicUrl(fileName);
+    return { success: true, url: publicUrl };
+  }
 
   let { error } = await db.storage
     .from("product-images")
