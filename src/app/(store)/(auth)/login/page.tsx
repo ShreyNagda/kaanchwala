@@ -49,6 +49,7 @@ function LoginForm() {
           <Link
             href="/forgot-password"
             className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            tabIndex={-1}
           >
             Forgot password?
           </Link>

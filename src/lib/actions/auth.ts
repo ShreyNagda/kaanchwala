@@ -18,7 +18,9 @@ export async function signIn(prevState: unknown, formData: FormData) {
   }
 
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.signInWithPassword(validated.data);
+  const { data, error } = await supabase.auth.signInWithPassword(
+    validated.data,
+  );
 
   if (error) {
     return { error: { email: [error.message] } };
@@ -37,7 +39,7 @@ export async function signIn(prevState: unknown, formData: FormData) {
   }
 
   const redirectTo = formData.get("redirect") as string;
-  redirect(redirectTo || "/");
+  redirect(redirectTo || "/account");
 }
 
 export async function signUp(prevState: unknown, formData: FormData) {
@@ -94,7 +96,9 @@ export async function signUp(prevState: unknown, formData: FormData) {
       .eq("id", user.id);
   }
 
-  redirect(`/register/confirm?email=${encodeURIComponent(validated.data.email)}&redirect=${encodeURIComponent(redirectTo || "/")}`);
+  redirect(
+    `/register/confirm?email=${encodeURIComponent(validated.data.email)}&redirect=${encodeURIComponent(redirectTo || "/")}`,
+  );
 }
 
 export async function signOut() {
