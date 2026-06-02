@@ -79,7 +79,8 @@ function ConfirmEmailContent() {
 
       {isExpired && (
         <div className="text-xs text-destructive bg-destructive/10 py-2.5 px-3 rounded-lg leading-relaxed">
-          The confirmation link has expired or is invalid. Please click the button below to request a new verification email.
+          The confirmation link has expired or is invalid. Please click the
+          button below to request a new verification email.
         </div>
       )}
 
@@ -131,15 +132,11 @@ function ConfirmEmailContent() {
 
       {/* Navigation links */}
       <div className="flex flex-col gap-2 pt-2">
+        <p className="text-xs text-muted-foreground leading-relaxed max-w-xs mx-auto mt-2">
+          If verified, click here to Sign In
+        </p>
         <Link href="/login" className="btn-outline w-full">
-          Back to Sign In
-        </Link>
-        <Link
-          href="/register"
-          className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="h-3 w-3" />
-          Edit registration details
+          Sign In
         </Link>
       </div>
     </div>
