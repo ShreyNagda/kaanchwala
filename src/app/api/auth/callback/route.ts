@@ -1,9 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
 import { type NextRequest, NextResponse } from "next/server";
+import { type EmailOtpType } from "@supabase/supabase-js";
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
+  const token_hash = searchParams.get("token_hash");
+  const type = searchParams.get("type");
   const next = searchParams.get("next") ?? "/";
 
   if (code) {
@@ -11,8 +14,21 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error) {
-      // If this is a password-reset flow, send to the update-password page
-      const type = searchParams.get("type");
+      if (type === "recovery") {
+        return NextResponse.redirect(`${origin}/change-password`);
+      }
+      return NextResponse.redirect(`${origin}${next}`);
+    }
+  }
+
+  if (token_hash && type) {
+    const supabase = await createClient();
+    const { error } = await supabase.auth.verifyOtp({
+      token_hash,
+      type: type as EmailOtpType,
+    });
+
+    if (!error) {
       if (type === "recovery") {
         return NextResponse.redirect(`${origin}/change-password`);
       }
@@ -21,7 +37,6 @@ export async function GET(request: NextRequest) {
   }
 
   // Something went wrong — redirect to the appropriate error page
-  const type = searchParams.get("type");
   if (type === "recovery") {
     return NextResponse.redirect(`${origin}/change-password?error=link_expired`);
   }
