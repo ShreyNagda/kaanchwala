@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { loginSchema, registerSchema } from "@/lib/validations/auth";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 
 export async function signIn(prevState: unknown, formData: FormData) {
   const raw = {
@@ -53,11 +54,20 @@ export async function signUp(prevState: unknown, formData: FormData) {
     return { error: validated.error.flatten().fieldErrors };
   }
 
+  const headersList = await headers();
+  const host = headersList.get("host") || "localhost:3000";
+  const protocol = headersList.get("x-forwarded-proto") || "http";
+  const origin = `${protocol}://${host}`;
+
+  const redirectTo = formData.get("redirect") as string;
+  const nextParam = `/register/success?redirect=${encodeURIComponent(redirectTo || "/")}`;
+
   const supabase = await createClient();
   const { error } = await supabase.auth.signUp({
     email: validated.data.email,
     password: validated.data.password,
     options: {
+      emailRedirectTo: `${origin}/api/auth/callback?next=${encodeURIComponent(nextParam)}`,
       data: {
         full_name: validated.data.full_name,
         phone: validated.data.phone,
@@ -84,8 +94,7 @@ export async function signUp(prevState: unknown, formData: FormData) {
       .eq("id", user.id);
   }
 
-  const redirectTo = formData.get("redirect") as string;
-  redirect(`/register/success?redirect=${encodeURIComponent(redirectTo || "/")}`);
+  redirect(`/register/confirm?email=${encodeURIComponent(validated.data.email)}&redirect=${encodeURIComponent(redirectTo || "/")}`);
 }
 
 export async function signOut() {

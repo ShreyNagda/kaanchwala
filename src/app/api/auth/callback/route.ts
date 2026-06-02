@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
       // If this is a password-reset flow, send to the update-password page
       const type = searchParams.get("type");
       if (type === "recovery") {
-        return NextResponse.redirect(`${origin}/account/update-password`);
+        return NextResponse.redirect(`${origin}/change-password`);
       }
       return NextResponse.redirect(`${origin}${next}`);
     }
