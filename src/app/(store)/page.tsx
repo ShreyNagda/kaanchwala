@@ -366,7 +366,7 @@ export default async function HomePage() {
                 </Link>
                 <Link
                   className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-400 hover:text-white"
-                  href={"tel:+9890334929"}
+                  href={"tel:+919890334929"}
                 >
                   <Phone className="h-4 w-4 text-accent" /> Book Consultation
                 </Link>
