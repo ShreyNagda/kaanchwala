@@ -111,7 +111,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2.5 text-xs text-muted-foreground font-light">
                 <Mail className="h-4 w-4 text-accent shrink-0" />
-                <span>support@kaanchwala.in</span>
+                <span>arihantkanchwala@gmail.com</span>
               </li>
               <li className="flex items-center gap-2.5 text-xs text-muted-foreground font-light">
                 <Phone className="h-4 w-4 text-accent shrink-0" />
